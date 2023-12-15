@@ -1,0 +1,6 @@
+.config-button {
+  position: absolute;
+  z-index: 999999;
+  top: 4%;
+  right: 4%;
+}

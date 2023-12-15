@@ -1,0 +1,7 @@
+.leaflet-container {
+  position: relative;
+  width: 100vw !important;
+  height: 100vh;
+  min-width: 600px;
+  min-height: 500px;
+}
