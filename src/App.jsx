@@ -1,13 +1,14 @@
 import "leaflet/dist/leaflet.css"
+import { router } from './router'
+import { RouterProvider } from 'react-router-dom'
 
-import MapComponent from "./components/MapComponent/MapComponent"
 
 import './App.css'
 
 function App() {
   return (
     <>
-      <MapComponent />
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
