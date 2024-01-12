@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { MapContainer, TileLayer } from "react-leaflet"
+import { MapContainer } from "react-leaflet"
 
 import MarkerComponent from "../MarkerComponent/MarkerComponent"
 import MapControls from "../MapControls/MapControls"
@@ -12,15 +12,18 @@ import searchContext from "../../context/searchContext"
 import { getData } from "../../firebase/queries"
 
 import './MapComponent.css'
+import LayersControlComponent from "../LayersControlComponent/LayersControl"
+import ContourLayer from "../MapContour/MapContour"
+import CoordsDisplay from "../CoordsDisplay/CoordsDisplay"
 
-export default function MapComponent () {
+export default function MapComponent() {
   const mapRef = useRef()
-  const [ mapCenter, setMapCenter ] = useState([ 48.5, 8.5 ])
-  const [ markers, setMarkers ] = useState([])
+  const [mapCenter, setMapCenter] = useState([48.5, 8.5])
+  const [markers, setMarkers] = useState([])
   const [employeeCategories, setEmployeeCategories] = useState([])
   const [selectedCategories, setSelectedCategories] = useState({})
-  const [ showControls, setShowControls ] = useState(false)
-  const [ searchQuery, setSearchQuery ] = useState('')
+  const [showControls, setShowControls] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleClick = (data) => {
     setMapCenter([data.Lat, data.Lon])
@@ -42,7 +45,7 @@ export default function MapComponent () {
         <MarkerComponent
           key={data.Label}
           info={data}
-          onClick={ () => handleClick(data) }
+          onClick={() => handleClick(data)}
         />
       )
     })
@@ -84,22 +87,29 @@ export default function MapComponent () {
     setShowControls(!showControls)
   }
 
+
+
+
+
   return (
     <searchContext.Provider value={{ searchQuery, setSearchQuery }}>
       <MapContainer
         center={mapCenter}
-        zoom={8}
+        zoom={7.3}
+        minZoom={7.3}
         doubleClickZoom={false}
         style={{ height: "100vh", width: "100vw", zIndex: 0 }}
         ref={mapRef}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+
+      <CoordsDisplay />
+      <ContourLayer />
+      
+      
+      <LayersControlComponent action={displayMarkers} />
+
         <MapUpdater center={mapCenter} />
         <SearchBar />
-        {displayMarkers()}
         <ConfigButton onClick={toggleShowControls} />
         {showControls && (
           <MapControls

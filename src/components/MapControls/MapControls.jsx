@@ -20,7 +20,7 @@ export default function MapControls ({ categories, selected, changeCheck }) {
 
   return (
     <div className="controls">
-      Hola
+      <p className='text-2xl'>Preferences</p>
       <div className="employee-filter">
         <h3>Employees</h3>
         {categories.map((category, index) => (
