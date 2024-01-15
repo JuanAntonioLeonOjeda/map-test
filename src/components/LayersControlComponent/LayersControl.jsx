@@ -2,7 +2,7 @@ import { Circle, LayerGroup, LayersControl, TileLayer } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import HeatmapLayer from "../HeatmapLayer/HeatmapLayer"
 
-const LayersControlComponent = (props) => {
+const LayersControlComponent = ({ markers }) => {
   return (
     <LayersControl position="topleft">
       <TileLayer
@@ -12,7 +12,7 @@ const LayersControlComponent = (props) => {
       <LayersControl.Overlay name="Tech companies">
         <LayerGroup>
           <MarkerClusterGroup chunkedLoading>
-            {props.action()}
+            { markers() }
           </MarkerClusterGroup>
         </LayerGroup>
       </LayersControl.Overlay>
