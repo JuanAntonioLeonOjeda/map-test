@@ -4,11 +4,7 @@ import { states } from '../../../data.json'
 
 const PlotFigure = () => {
   const containerRef = useRef()
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    setData(states)
-  }, [])
+  const [data, setData] = useState(states)
 
   useEffect(() => {
     if (data === undefined) return
@@ -31,7 +27,8 @@ const PlotFigure = () => {
         )
       ]
     })
-    containerRef.current.append(plot)
+    containerRef.current.innerHTML = '' // Limpia el contenedor antes de agregar el gráfico
+    containerRef.current.appendChild(plot)
   }, [data])
 
   return (
