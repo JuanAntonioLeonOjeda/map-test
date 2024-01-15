@@ -5,3 +5,7 @@
   min-width: 600px;
   min-height: 500px;
 }
+
+.custom-edit-control .leaflet-draw-edit-edit {
+  display: none;
+}

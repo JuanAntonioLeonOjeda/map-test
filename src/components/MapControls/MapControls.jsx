@@ -6,7 +6,7 @@ import NewMarkerForm from '../NewMarkerForm/NewMarkerForm'
 
 import './MapControls.css'
 
-export default function MapControls ({ categories, selected, changeCheck }) {
+export default function MapControls ({ categories, selected, changeCheck, onlyShowSelected, setOnlyShowSelected }) {
   const fileInputRef = useRef(null)
 
   const handleUpload = () => {
@@ -17,6 +17,10 @@ export default function MapControls ({ categories, selected, changeCheck }) {
     const file = e.target.files[0]
     uploadCsv(file);
   }
+
+  const handleChange = (e) => {
+    setMarkerData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
     <div className="controls">
@@ -34,6 +38,30 @@ export default function MapControls ({ categories, selected, changeCheck }) {
             <label htmlFor={`checkbox-${index}`}>{category}</label>
           </div>
         ))}
+      </div>
+      Mostrar solo el seleccionado?
+      <div>
+        <label>
+          <input
+            type="radio"
+            name="filterShow"
+            value={true}
+            checked={onlyShowSelected}
+            onChange={() => setOnlyShowSelected(true)}
+          />
+         Si
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="filterShow"
+            value={false}
+            checked={!onlyShowSelected}
+            onChange={() => setOnlyShowSelected(false)}
+          />
+          No
+        </label>
       </div>
       <NewMarkerForm categories={ categories }/>
       <div className="control-actions">
@@ -53,5 +81,7 @@ export default function MapControls ({ categories, selected, changeCheck }) {
 MapControls.propTypes = {
   categories: PropTypes.array,
   selected: PropTypes.object,
-  changeCheck: PropTypes.func
+  changeCheck: PropTypes.func,
+  onlyShowSelected: PropTypes.bool,
+  setOnlyShowSelected: PropTypes.func,
 }
