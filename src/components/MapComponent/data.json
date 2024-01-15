@@ -1,68 +1,46 @@
 {
   "states": [
-    {
-      "name": "Baden-Württemberg",
-      "population": 11069533
-    },
-    {
-      "name": "Bayern",
-      "population": 13076721
-    },
-    {
-      "name": "Berlin",
-      "population": 3669491
-    },
-    {
-      "name": "Brandenburg",
-      "population": 2521893
-    },
-    {
-      "name": "Bremen",
-      "population": 681202
-    },
-    {
-      "name": "Hamburg",
-      "population": 1841179
-    },
-    {
-      "name": "Hessen",
-      "population": 6288080
-    },
-    {
-      "name": "Mecklenburg-Vorpommern",
-      "population": 1608138
-    },
-    {
-      "name": "Niedersachsen",
-      "population": 7993608
-    },
-    {
-      "name": "Nordrhein-Westfalen",
-      "population": 17947221
-    },
-    {
-      "name": "Rheinland-Pfalz",
-      "population": 4084844
-    },
-    {
-      "name": "Saarland",
-      "population": 990509
-    },
-    {
-      "name": "Sachsen-Anhalt",
-      "population": 2194782
-    },
-    {
-      "name": "Sachsen",
-      "population": 4071971
-    },
-    {
-      "name": "Schleswig-Holstein",
-      "population": 2903773
-    },
-    {
-      "name": "Thüringen",
-      "population": 2133378
-    }
+    {"id_3": 1, "name_3": "Breisgau-Hochschwarzwald", "population": 1000000},
+    {"id_3": 2, "name_3": "Emmendingen", "population": 300000},
+    {"id_3": 3, "name_3": "Freiburg", "population": 700000},
+    {"id_3": 4, "name_3": "Konstanz", "population": 800000},
+    {"id_3": 5, "name_3": "Lörrach", "population": 400000},
+    {"id_3": 6, "name_3": "Ortenaukreis", "population": 900000},
+    {"id_3": 7, "name_3": "Rottweil", "population": 200000},
+    {"id_3": 8, "name_3": "Schwarzwald-Baar-Kreis", "population": 600000},
+    {"id_3": 9, "name_3": "Tuttlingen", "population": 300000},
+    {"id_3": 10, "name_3": "Waldshut", "population": 400000},
+    {"id_3": 11, "name_3": "Baden-Baden Städte", "population": 100000},
+    {"id_3": 12, "name_3": "Calw", "population": 300000},
+    {"id_3": 13, "name_3": "Enz", "population": 400000},
+    {"id_3": 14, "name_3": "Freudenstadt", "population": 200000},
+    {"id_3": 15, "name_3": "Heidelberg Städte", "population": 500000},
+    {"id_3": 16, "name_3": "Karlsruhe Städte", "population": 800000},
+    {"id_3": 17, "name_3": "Karlsruhe", "population": 600000},
+    {"id_3": 18, "name_3": "Mannheim-Städte", "population": 1000000},
+    {"id_3": 19, "name_3": "Neckar-Odenwald-Kreis", "population": 300000},
+    {"id_3": 20, "name_3": "Pforzheim Städte", "population": 400000},
+    {"id_3": 21, "name_3": "Rastatt", "population": 350000},
+    {"id_3": 22, "name_3": "Rhein-Neckar-Kreis", "population": 800000},
+    {"id_3": 23, "name_3": "Böblingen", "population": 450000},
+    {"id_3": 24, "name_3": "Esslingen", "population": 550000},
+    {"id_3": 25, "name_3": "Göppingen", "population": 300000},
+    {"id_3": 26, "name_3": "Heidenheim", "population": 200000},
+    {"id_3": 27, "name_3": "Heilbronn city Städte", "population": 700000},
+    {"id_3": 28, "name_3": "Heilbronn", "population": 700000},
+    {"id_3": 29, "name_3": "Hohenlohe", "population": 300000},
+    {"id_3": 32, "name_3":"Ostalbkreis", "population": 800000},
+    {"id_3": 33, "name_3": "Rems-Murr-Kreis", "population": 700000},
+    {"id_3": 34, "name_3": "Schwäbisch Hall", "population": 600000},
+    {"id_3": 35, "name_3": "Stuttgart Städte", "population": 1200000},
+    {"id_3": 36, "name_3": "Alb-Donau", "population": 500000},
+    {"id_3": 37, "name_3": "Biberach", "population": 300000},
+    {"id_3": 38, "name_3": "Bodensee", "population": 900000},
+    {"id_3": 39, "name_3": "Ravensburg", "population": 400000},
+    {"id_3": 40, "name_3": "Reutlingen", "population": 800000},
+    {"id_3": 41, "name_3": "Sigmaringen", "population": 200000},
+    {"id_3": 42, "name_3": "Tübingen", "population": 700000},
+    {"id_3": 43, "name_3": "Ulm-Städte", "population": 600000},
+    {"id_3": 44, "name_3": "Zollernalbkreis", "population": 400000}
   ]
 }
