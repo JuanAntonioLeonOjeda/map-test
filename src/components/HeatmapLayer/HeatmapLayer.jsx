@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { GeoJSON } from "react-leaflet"
 import { useGeoJsonData } from "../../hooks/useGeoJsonData"
-import { states } from "../MapComponent/data.json"
+import { states } from "../../../data.json"
 
 const HeatmapLayer = () => {
   const data = useGeoJsonData()
