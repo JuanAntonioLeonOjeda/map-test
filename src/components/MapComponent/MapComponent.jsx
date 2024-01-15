@@ -75,25 +75,19 @@ export default function MapComponent() {
   const displayMarkers = () => {
     return markers
       .filter(marker => {
-      const markerCoords = [parseFloat(marker.props.info.Lon), parseFloat(marker.props.info.Lat)];
-      const markerPoint = point(markerCoords);
-
+        const markerCoords = [parseFloat(marker.props.info.Lon), parseFloat(marker.props.info.Lat)];
+        const markerPoint = point(markerCoords);
 
       // Check if the marker is inside the search polygon
       if (searchPolygon && searchPolygon.length > 0) {
         const polygonCoordinates = searchPolygon[0].map(coord => [coord.lng, coord.lat]);
         
-
         // Cierra el anillo lineal agregando la primera coordenada al final
         polygonCoordinates.push(polygonCoordinates[0]);
 
         // Verifica si hay al menos 4 pares de coordenadas
         if (polygonCoordinates.length >= 4) {
-
-          const poly = polygon([polygonCoordinates]);
-
-          const isInsidePolygon = booleanPointInPolygon(markerPoint, poly);
-
+          const isInsidePolygon = booleanPointInPolygon(markerPoint, polygon([polygonCoordinates]));
           return isInsidePolygon;
         }
       }
@@ -101,9 +95,7 @@ export default function MapComponent() {
       // If no search polygon or not enough coordinates, display all markers
       return true;
     })
-    .map(marker => {
-      return marker;
-    });
+    .map(marker => marker );
   }
 
   const handleCheckboxChange = (category) => {
@@ -117,7 +109,6 @@ export default function MapComponent() {
     setShowControls(!showControls)
   }
 
-
   const onDrawCreate = (e) => {
     // Obtén la capa del evento
     const layer = e.layer;
@@ -127,16 +118,6 @@ export default function MapComponent() {
     setSearchPolygon(latlngs)
 
   };
-
-  useEffect(() => {
-    if (mapRef.current) {
-      // Check if mapRef.current is available before accessing it
-      mapRef.current.on('draw:deleted', () => {
-        setSearchPolygon(null);
-      });
-    }
-  }, [mapRef]);
-
 
   return (
     <searchContext.Provider value={{ searchQuery, setSearchQuery }}>
@@ -153,7 +134,7 @@ export default function MapComponent() {
       <ContourLayer />
       
       
-      <LayersControlComponent action={displayMarkers} />
+      <LayersControlComponent markers={displayMarkers} />
 
         <MapUpdater center={mapCenter} />
         <SearchBar />
@@ -165,6 +146,9 @@ export default function MapComponent() {
           <EditControl
             position="bottomright"
             onCreated={onDrawCreate}
+            onDeleted={() => {
+              setSearchPolygon(null);
+            }}
             draw={{
               rectangle: false,
               polyline: false,

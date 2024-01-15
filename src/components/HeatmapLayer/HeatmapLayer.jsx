@@ -46,13 +46,11 @@ const HeatmapLayer = () => {
   }
 
   const onEachFeature = (feature, layer) => {
-    layer.on("click", (e) => {
+    layer.on("click", () => {
       setSelectedRegion((prevSelectedRegion) => {
-        if (prevSelectedRegion === feature.properties.ID_3) {
-          return null;
-        } else {
-          return feature.properties.ID_3;
-        }
+        return prevSelectedRegion && prevSelectedRegion.feature.properties.ID_3 === feature.properties.ID_3
+          ? null
+          : layer;
       });
     });
 
@@ -79,7 +77,7 @@ const HeatmapLayer = () => {
     const mediumLimit = 600000;
 
     // Asignar colores en función de los tramos de población
-    if (selectedRegion == feature.properties.ID_3) {
+    if (selectedRegion && selectedRegion.feature.properties.ID_3 == feature.properties.ID_3) {
       return selectedStyle
     /* } else if (hoverState == feature.properties.ID_1) {
       return {
