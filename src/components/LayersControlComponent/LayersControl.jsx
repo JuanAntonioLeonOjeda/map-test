@@ -6,8 +6,13 @@ const LayersControlComponent = ({ markers }) => {
   return (
     <LayersControl position="topleft">
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='© OpenStreetMap, © CartoDB'
+        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+      />
+
+      <TileLayer
+        attribution='© OpenStreetMap, © CartoDB'
+        url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
       />
       <LayersControl.Overlay name="Tech companies">
         <LayerGroup>

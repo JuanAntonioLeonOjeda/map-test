@@ -123,8 +123,8 @@ export default function MapComponent() {
     <searchContext.Provider value={{ searchQuery, setSearchQuery }}>
       <MapContainer
         center={mapCenter}
-        zoom={7.3}
-        minZoom={7.3}
+        zoom={2}
+        minZoom={6}
         doubleClickZoom={false}
         style={{ height: "100vh", width: "100vw", zIndex: 0 }}
         ref={mapRef}
