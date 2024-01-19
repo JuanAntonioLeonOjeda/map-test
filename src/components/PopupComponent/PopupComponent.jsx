@@ -5,11 +5,8 @@ export default function PopupComponent({ data }) {
   return (
     <Popup>
       <h3>
-        { data.Label }
+        { data.name }
       </h3>
-      <p>
-        { data.Description }
-      </p>
     </Popup>
   )
 }

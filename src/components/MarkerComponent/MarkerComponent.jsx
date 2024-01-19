@@ -5,8 +5,8 @@ import { Icon } from "leaflet"
 import PopupComponent from "../PopupComponent/PopupComponent";
 
 export default function MarkerComponent ({ info, onClick }) {
-  const lon = parseFloat(info.Lon)
-  const lat = parseFloat(info.Lat);
+  const lon = parseFloat(info.longitude)
+  const lat = parseFloat(info.latitude);
 
   const icon = new Icon({
     iconUrl: '/vite.svg',

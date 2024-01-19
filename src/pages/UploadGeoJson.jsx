@@ -64,20 +64,38 @@ function UploadGeoJson() {
         <label>
           <input
             type="radio"
-            value="region"
-            checked={geoType === 'region'}
+            value="division1"
+            checked={geoType === 'division1'}
             onChange={handleRadioChange}
           />
-          Región
+          Division 1
         </label>
         <label>
           <input
             type="radio"
-            value="district"
-            checked={geoType === 'district'}
+            value="division2"
+            checked={geoType === 'division2'}
             onChange={handleRadioChange}
           />
-          Distrito
+          Division 2
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="division3"
+            checked={geoType === 'division3'}
+            onChange={handleRadioChange}
+          />
+          Division 3
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="division4"
+            checked={geoType === 'division4'}
+            onChange={handleRadioChange}
+          />
+          Division 4
         </label>
       </div>
 
