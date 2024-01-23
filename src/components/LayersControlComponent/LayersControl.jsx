@@ -15,8 +15,8 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
       {/* <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
-      /> */}
-      <LayersControl.Overlay name="Tech companies">
+      />
+      <LayersControl.Overlay name="Tech companies" checked>
         <LayerGroup>
           <MarkerClusterGroup chunkedLoading>
             { markers() }
