@@ -59,7 +59,7 @@ function UploadGeoJson() {
             checked={geoType === 'country'}
             onChange={handleRadioChange}
           />
-          País
+          Country
         </label>
         <label>
           <input
