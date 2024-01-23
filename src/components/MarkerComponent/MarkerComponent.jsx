@@ -1,6 +1,6 @@
 import { Marker } from "react-leaflet";
-import PropTypes from 'prop-types'
 import { Icon } from "leaflet"
+import PropTypes from 'prop-types'
 
 import PopupComponent from "../PopupComponent/PopupComponent";
 
@@ -10,7 +10,8 @@ export default function MarkerComponent ({ info, onClick }) {
 
   const icon = new Icon({
     iconUrl: '/marker.svg',
-    iconAnchor: [ 50, 50 ]
+    iconSize: [ 30, 30 ],
+    iconAnchor: [ 15, 15 ]
   })
 
   return (

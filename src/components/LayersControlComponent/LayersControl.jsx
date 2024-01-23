@@ -1,11 +1,11 @@
-import { useState } from "react"
-import { Circle, LayerGroup, LayersControl, TileLayer } from "react-leaflet"
+
+import { LayerGroup, LayersControl, TileLayer } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import HeatmapLayer from "../HeatmapLayer/HeatmapLayer"
 import PopulationLayer from "../PopulationLayer/PopulationLayer"
+import PatentsLayer from "../PatentsLayer/PatentsLayer"
 
 const LayersControlComponent = ({ markers, mapDivision }) => {
-
   return (
     <LayersControl position="topleft">
       <TileLayer
@@ -26,7 +26,17 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
         </LayerGroup>
       </LayersControl.Overlay>
 
-      <PopulationLayer />
+      <LayersControl.Overlay name="Populations" checked>
+        <LayerGroup>
+          <PopulationLayer />
+        </LayerGroup>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="Patents" checked>
+        <LayerGroup>
+          <PatentsLayer />
+        </LayerGroup>
+      </LayersControl.Overlay>
 
       <LayersControl.Overlay name="Heatmap">
         <MarkerClusterGroup chunkedLoading>

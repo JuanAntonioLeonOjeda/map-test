@@ -13,14 +13,11 @@ import MapUpdater from "../MapUpdater/MapUpdater"
 
 import searchContext from "../../context/searchContext"
 
-import { getData } from "../../firebase/queries"
-
 import './MapComponent.css'
 import LayersControlComponent from "../LayersControlComponent/LayersControl"
 import ContourLayer from "../MapContour/MapContour"
 import CoordsDisplay from "../CoordsDisplay/CoordsDisplay"
-import { getDataAPI } from "../../services/data";
-import { marker } from "leaflet";
+import { getDataAPI } from "../../services/data"
 
 export default function MapComponent() {
   const mapRef = useRef()
@@ -112,7 +109,6 @@ export default function MapComponent() {
             return isInsidePolygon;
           }
         }
-  
         // If no search polygon or not enough coordinates, display all markers
         return true;
       })

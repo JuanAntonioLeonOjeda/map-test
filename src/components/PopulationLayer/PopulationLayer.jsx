@@ -1,25 +1,61 @@
-import { useGeoJsonData } from "../../hooks/useGeoJsonData"
-import { Circle, LayersControl, LayerGroup } from "react-leaflet"
+import { Circle } from "react-leaflet"
+import { getDataAPI } from "../../services/data"
+import { useEffect, useState } from 'react'
+import { getDivision3DataAPI } from "../../services/division3"
+import { getDivision4DataAPI } from "../../services/division4"
 
 const PopulationLayer = () => {
+    const [datas, setDatas] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getDataAPI()
+            setDatas(result.datas)
+        }
+        fetchData()
+    }, [])
+
+    //////////////////////////////////////////////
+
+    const [division3, setDivision3] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getDivision3DataAPI()
+            setDivision3(result)
+        }
+        fetchData()
+    }, [])
+
+    ///////////////////////////////////////////////////
+    
+    const [division4, setDivision4] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getDivision4DataAPI()
+            setDivision4(result)
+        }
+        fetchData()
+    }, [])
+
+    const districtNames = [...new Set(division4.map(item => item.name))]
+    const districtPopulation = division4 && division4.map(item => item.districtPopulation)
+
+    // console.log(districtNames)
+    console.log(districtPopulation)
 
     return (
-        <LayersControl.Overlay name="Populations" checked>
-            <LayerGroup>
+        <section>
+            {datas && datas.map((data, index) => (
                 <Circle
-                    center={[48.78, 9.18]}
-                    pathOptions={{ fillColor: 'red', stroke: false }}
-                    radius={20000} />
-                <Circle
-                    center={[48.58, 7.75]}
-                    pathOptions={{ fillColor: 'red', stroke: false }}
-                    radius={15000} />
-                <Circle
-                    center={[48.48, 9.21]}
-                    pathOptions={{ fillColor: 'red', stroke: false }}
-                    radius={8000} />
-            </LayerGroup>
-        </LayersControl.Overlay>
+                    key={index}
+                    center={[data.latitude, data.longitude]}
+                    pathOptions={{ fillColor: 'blue', stroke: false }}
+                    radius={data.districtPopulation / 500}
+                />
+            ))}
+        </section>
     )
 }
 
