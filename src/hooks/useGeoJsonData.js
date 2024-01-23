@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-
-
-
-
-
 const urls = {
   country: "https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/1_deutschland/1_sehr_hoch.geo.json",
   division1: "https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/1_sehr_hoch.geo.json",
@@ -15,7 +10,6 @@ const urls = {
 
 export const useGeoJsonData = (type) => {
   const [data, setData] = useState(null)
-  console.log(type)
 
   useEffect(() => {
     const fetchData = async () => {

@@ -129,7 +129,6 @@ const HeatmapLayer = ({ mapDivision }) => {
     }
   }
 
-
   const filteredRegions = () => {
     return data?.features.filter((region) => region.properties.NAME_1 === 'Baden-Württemberg')
   }
@@ -140,7 +139,7 @@ const HeatmapLayer = ({ mapDivision }) => {
 
     return (
       <GeoJSON
-        data={data}
+        data={filteredData}
         style={(feature) => setStyle(feature)}
         onEachFeature={onEachFeature}
         key={key} // Usa la clave única

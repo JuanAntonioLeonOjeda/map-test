@@ -21,7 +21,7 @@ export default function SearchBar() {
   const displayResults = () => {
     return searchResults.map(result => {
       return (
-        <SearchResult key={result.properties.place_id} data={ result } />
+        <SearchResult key={result.properties.place_id} data={ result || null } />
       )
     })
   }
@@ -36,12 +36,6 @@ export default function SearchBar() {
       <ul className='result-list'>
         { displayResults() }
       </ul>
-      {/* <GeoapifyContext apiKey="3aed3ab3be72482e8519c5b007bf5d46">
-        <GeoapifyGeocoderAutocomplete
-          placeSelect={onPlaceSelect}
-          suggestionsChange={onSuggectionChange}
-        />
-      </GeoapifyContext> */}
     </>
   );
 }
