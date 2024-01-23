@@ -19,6 +19,8 @@ import './MapComponent.css'
 import LayersControlComponent from "../LayersControlComponent/LayersControl"
 import ContourLayer from "../MapContour/MapContour"
 import CoordsDisplay from "../CoordsDisplay/CoordsDisplay"
+import { getDataAPI } from "../../services/data";
+import { marker } from "leaflet";
 
 export default function MapComponent() {
   const mapRef = useRef()
@@ -34,33 +36,47 @@ export default function MapComponent() {
 
 
   const handleClick = (data) => {
-    setMapCenter([data.Lat, data.Lon])
+    setMapCenter([data.latitude, data.longitude])
+  }
+
+  const findPopulationParams = (datas) => {
+    const populationValues = datas.map(row => row.districtPopulation);
+    const maxPopulation = Math.max(...populationValues);
+    const minPopulation = Math.min(...populationValues);
+
+    // Step 2: Calculate the population range
+    const populationRange = maxPopulation - minPopulation;
+
+    // Step 3: Divide the population range into at least 5 categories
+    const categoriesCount = 5;
+    const categoryRange = Math.ceil(populationRange / categoriesCount);
+
+    return { minPopulation, maxPopulation, categoryRange}
   }
 
   const connectToDB = async () => {
-    const result = await getData()
+    const { datas } = await getDataAPI()
 
-    const uniqueEmployeeCategories = new Set()
-    const initialSelectedCategories = {}
+    const { minPopulation, categoryRange } = findPopulationParams(datas)
 
-    const arr = result.docs.map(row => {
-      const data = row.data()
 
-      uniqueEmployeeCategories.add(data.Employees)
-      initialSelectedCategories[data.Employees] = true
+    const populationCategory = new Set();
 
-      return (
+    const filteredDatas = datas.map(row => {
+      const category = Math.floor((row.districtPopulation - minPopulation) / categoryRange);
+      populationCategory.add(category);
+
+       return (
         <MarkerComponent
-          key={data.Label}
-          info={data}
-          onClick={() => handleClick(data)}
+          key={row.name}
+          info={row}
+          onClick={() => handleClick(row)}
         />
-      )
-    })
+      );
+    });
 
-    setMarkers(arr)
-    setEmployeeCategories([...uniqueEmployeeCategories])
-    setSelectedCategories(initialSelectedCategories)
+    setMarkers(filteredDatas)
+    setEmployeeCategories([...populationCategory])
   }
 
   useEffect(() => {
@@ -69,35 +85,39 @@ export default function MapComponent() {
 
   useEffect(() => {
     if (searchQuery) {
+      console.log(searchQuery)
       const coords = [searchQuery.lat, searchQuery.lon];
       setMapCenter(coords)
     }
   }, [searchQuery]);
 
   const displayMarkers = () => {
-    return markers
-      .filter(marker => {
-        const markerCoords = [parseFloat(marker.props.info.Lon), parseFloat(marker.props.info.Lat)];
-        const markerPoint = point(markerCoords);
+    if(markers) {
 
-      // Check if the marker is inside the search polygon
-      if (searchPolygon && searchPolygon.length > 0) {
-        const polygonCoordinates = searchPolygon[0].map(coord => [coord.lng, coord.lat]);
-        
-        // Cierra el anillo lineal agregando la primera coordenada al final
-        polygonCoordinates.push(polygonCoordinates[0]);
-
-        // Verifica si hay al menos 4 pares de coordenadas
-        if (polygonCoordinates.length >= 4) {
-          const isInsidePolygon = booleanPointInPolygon(markerPoint, polygon([polygonCoordinates]));
-          return isInsidePolygon;
+      return markers
+         .filter(marker => {
+          const markerCoords = [parseFloat(marker.props.info.longitude), parseFloat(marker.props.info.latitude)];
+          const markerPoint = point(markerCoords);
+  
+        // Check if the marker is inside the search polygon
+        if (searchPolygon && searchPolygon.length > 0) {
+          const polygonCoordinates = searchPolygon[0].map(coord => [coord.lng, coord.lat]);
+          
+          // Cierra el anillo lineal agregando la primera coordenada al final
+          polygonCoordinates.push(polygonCoordinates[0]);
+  
+          // Verifica si hay al menos 4 pares de coordenadas
+          if (polygonCoordinates.length >= 4) {
+            const isInsidePolygon = booleanPointInPolygon(markerPoint, polygon([polygonCoordinates]));
+            return isInsidePolygon;
+          }
         }
-      }
-
-      // If no search polygon or not enough coordinates, display all markers
-      return true;
-    })
-    .map(marker => marker );
+  
+        // If no search polygon or not enough coordinates, display all markers
+        return true;
+      })
+      .map(marker => marker ); 
+    }
   }
 
   const handleCheckboxChange = (category) => {
