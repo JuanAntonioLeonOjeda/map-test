@@ -11,7 +11,7 @@ const HeatmapLayer = () => {
   const selectedStyle = {
     opacity: 0.7,
     fillOpacity: 1,
-    fillColor: '#1C6E00',
+    fillColor: '#d2e4fc',
   }
 
   const lowLimitStyle = {

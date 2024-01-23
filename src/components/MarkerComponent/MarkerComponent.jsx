@@ -9,8 +9,8 @@ export default function MarkerComponent ({ info, onClick }) {
   const lat = parseFloat(info.Lat);
 
   const icon = new Icon({
-    iconUrl: '/vite.svg',
-    iconAnchor: [ 15, 30 ]
+    iconUrl: '/marker.svg',
+    iconAnchor: [ 50, 50 ]
   })
 
   return (

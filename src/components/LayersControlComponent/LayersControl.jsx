@@ -9,7 +9,7 @@ const LayersControlComponent = ({ markers }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <LayersControl.Overlay name="Tech companies">
+      <LayersControl.Overlay name="Tech companies" checked>
         <LayerGroup>
           <MarkerClusterGroup chunkedLoading>
             { markers() }
