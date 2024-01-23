@@ -12,11 +12,11 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
         url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
       />
 
-      {/* <TileLayer
+      <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
       />
-      <LayersControl.Overlay name="Tech companies" checked>
+      <LayersControl.Overlay name="Tech companies">
         <LayerGroup>
           <MarkerClusterGroup chunkedLoading>
             { markers() }
