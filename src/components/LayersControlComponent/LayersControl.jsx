@@ -1,19 +1,21 @@
+import { useState } from "react"
 import { Circle, LayerGroup, LayersControl, TileLayer } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import HeatmapLayer from "../HeatmapLayer/HeatmapLayer"
 
-const LayersControlComponent = ({ markers }) => {
+const LayersControlComponent = ({ markers, mapDivision }) => {
+
   return (
     <LayersControl position="topleft">
       <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
-        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+        url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
       />
 
-      <TileLayer
+      {/* <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
-      />
+      /> */}
       <LayersControl.Overlay name="Tech companies">
         <LayerGroup>
           <MarkerClusterGroup chunkedLoading>
@@ -41,7 +43,7 @@ const LayersControlComponent = ({ markers }) => {
 
       <LayersControl.Overlay name="Heatmap" checked>
         <MarkerClusterGroup chunkedLoading>
-          <HeatmapLayer />
+          <HeatmapLayer mapDivision={mapDivision} />
         </MarkerClusterGroup>
       </LayersControl.Overlay>
 

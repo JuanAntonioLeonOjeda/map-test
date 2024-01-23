@@ -6,7 +6,7 @@ import NewMarkerForm from '../NewMarkerForm/NewMarkerForm'
 
 import './MapControls.css'
 
-export default function MapControls ({ categories, selected, changeCheck, onlyShowSelected, setOnlyShowSelected }) {
+export default function MapControls ({ categories, selected, changeCheck, onlyShowSelected, setOnlyShowSelected, mapDivision, setMapDivision }) {
   const fileInputRef = useRef(null)
 
   const handleUpload = () => {
@@ -25,6 +25,47 @@ export default function MapControls ({ categories, selected, changeCheck, onlySh
   return (
     <div className="controls">
       <p className='text-2xl'>Preferences</p>
+      <div className="employee-filter">
+        <h3>Tipo de Division en el Mapa</h3>
+          <div className='flex flex-col'>
+            <label>
+              <input
+                type="radio"
+                name="mapDivision"
+                checked={mapDivision == "country" ? true : false}
+                onChange={() => setMapDivision("country")}
+              />
+              Pais
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mapDivision"
+                checked={mapDivision == "division1" ? true : false}
+                onChange={() => setMapDivision("division1")}
+              />
+              Estados Federados
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mapDivision"
+                checked={mapDivision == "division2" ? true : false}
+                onChange={() => setMapDivision("division2")}
+              />
+              Distritos/Ciudades independientes
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mapDivision"
+                checked={mapDivision == "division3" ? true : false}
+                onChange={() => setMapDivision("division3")}
+              />
+              Municipios
+            </label>
+          </div>
+      </div>
       <div className="employee-filter">
         <h3>Employees</h3>
         {categories.map((category, index) => (

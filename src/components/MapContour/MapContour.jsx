@@ -1,5 +1,6 @@
 import { GeoJSON } from "react-leaflet"
 import { useGeoJsonData } from "../../hooks/useGeoJsonData";
+import { useEffect, useState } from "react";
 
 const style = {
   opacity: .8, 
@@ -8,33 +9,23 @@ const style = {
   weight: 2
 }
 
-const ContourLayer = () => {
-  const data = useGeoJsonData()
+const ContourLayer = ({ mapDivision }) => {
+  const data = useGeoJsonData(mapDivision)
+  const [key, setKey] = useState(0); // clave única
 
-  const onEachFeature = (region, layer) => {
-    if (region.properties) {
-      layer.on('mouseover', (e) => {
-        const layer = e.target
-        // console.log(region.properties.ID_3, region.properties.NAME_3)
-      })
-    }
-  }
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [data]);
 
-  const filteredRegions = () => {
-    const result = data.features.filter((region) => region.properties.NAME_1 === 'Baden-Württemberg')                      
-    return result
-  }
-  
+
   // render react-leaflet GeoJSON when the data is ready
   if (data) {
-    const filteredData = { ...data, features: filteredRegions() }
-
     return (
       <section>
         <GeoJSON 
-          data={filteredData} 
+          data={data} 
           style={style}
-          onEachFeature={onEachFeature}
+          key={key} // Usa la clave única
           />
       </section>
       )

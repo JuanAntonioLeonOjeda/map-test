@@ -1,12 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { GeoJSON } from "react-leaflet"
 import { useGeoJsonData } from "../../hooks/useGeoJsonData"
 import { states } from "../../../data.json"
 
-const HeatmapLayer = () => {
-  const data = useGeoJsonData()
+const HeatmapLayer = ({ mapDivision }) => {
+  const data = useGeoJsonData(mapDivision)
   const [selectedRegion, setSelectedRegion] = useState(null)
   // const [ hoverState, setHoverState ] = useState('')
+  const [key, setKey] = useState(0); // clave única
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [data]);
+
+  useEffect(() => {
+    setSelectedRegion(null)
+  }, [mapDivision])
 
   const selectedStyle = {
     opacity: 0.7,
@@ -47,11 +56,33 @@ const HeatmapLayer = () => {
 
   const onEachFeature = (feature, layer) => {
     layer.on("click", () => {
-      setSelectedRegion((prevSelectedRegion) => {
-        return prevSelectedRegion && prevSelectedRegion.feature.properties.ID_3 === feature.properties.ID_3
-          ? null
-          : layer;
-      });
+      console.log(feature)
+      if (mapDivision == "country") {
+        setSelectedRegion((prevSelectedRegion) => {
+          return prevSelectedRegion && prevSelectedRegion.feature.properties.ID_0 === feature.properties.ID_0
+            ? null
+            : layer
+        })
+      } else if (mapDivision == "division1") {
+        setSelectedRegion((prevSelectedRegion) => {
+          return prevSelectedRegion && prevSelectedRegion.feature.id === feature.id
+            ? null
+            : layer
+        })
+      } else if (mapDivision == "division2" ){
+        setSelectedRegion((prevSelectedRegion) => {
+          return prevSelectedRegion && prevSelectedRegion.feature.properties.ID_2 === feature.properties.ID_2
+            ? null
+            : layer
+        })
+      } else {
+        setSelectedRegion((prevSelectedRegion) => {
+          return prevSelectedRegion && prevSelectedRegion.feature.properties.ID_3 === feature.properties.ID_3
+            ? null
+            : layer
+        })
+      }
+      
     });
 
     /* layer.on('mouseover', function (e) {
@@ -109,9 +140,10 @@ const HeatmapLayer = () => {
 
     return (
       <GeoJSON
-        data={filteredData}
+        data={data}
         style={(feature) => setStyle(feature)}
         onEachFeature={onEachFeature}
+        key={key} // Usa la clave única
       />
     )
   } else {

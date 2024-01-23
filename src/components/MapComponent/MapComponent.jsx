@@ -30,6 +30,8 @@ export default function MapComponent() {
   const [searchQuery, setSearchQuery] = useState('')
   const [ searchPolygon, setSearchPolygon ] = useState(null)
   const [ onlyShowSelected, setOnlyShowSelected ] = useState(false)
+  const [ mapDivision, setMapDivision ] = useState("country")
+
 
   const handleClick = (data) => {
     setMapCenter([data.Lat, data.Lon])
@@ -131,10 +133,10 @@ export default function MapComponent() {
       >
 
       <CoordsDisplay />
-      <ContourLayer />
+      <ContourLayer mapDivision={mapDivision} />
       
       
-      <LayersControlComponent markers={displayMarkers} />
+      <LayersControlComponent markers={displayMarkers} mapDivision={mapDivision} />
 
         <MapUpdater center={mapCenter} />
         <SearchBar />
@@ -166,6 +168,8 @@ export default function MapComponent() {
         </FeatureGroup>
         {showControls && (
           <MapControls
+            mapDivision={mapDivision}
+            setMapDivision={setMapDivision}
             onlyShowSelected={onlyShowSelected}
             setOnlyShowSelected={setOnlyShowSelected}
             categories={employeeCategories}
