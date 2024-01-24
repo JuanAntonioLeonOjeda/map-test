@@ -1,8 +1,9 @@
 import api from "./api";
 
-export const getDivision3DataAPI = async () => {
+export const getAtrineoCollectionAPI = async () => {
+    const id = '65a94d09aa0a5c3a29f6306a'
     try {
-        const { data } = await api.get(`/division3`, {
+        const { data } = await api.get(`/collection/${id}`, {
             headers: {
                 token: localStorage.getItem("token"),
             }
@@ -12,4 +13,4 @@ export const getDivision3DataAPI = async () => {
         console.error(error);
         throw new Error("Cannot send data");
     }
-}
+};

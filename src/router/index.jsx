@@ -5,6 +5,7 @@ import Csv from "../pages/Csv";
 import Charts from "../pages/Charts";
 import UploadGeoJson from "../pages/UploadGeoJson";
 import CsvCity from "../pages/CsvCity";
+import PopulationHeatmap from "../components/PopulationHeatmap/PopulationHeatmap";
 
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/csvcity",
         element: <CsvCity />,
+      },
+      {
+        path: "/population",
+        element: <PopulationHeatmap />,
       },
     ],
   },
