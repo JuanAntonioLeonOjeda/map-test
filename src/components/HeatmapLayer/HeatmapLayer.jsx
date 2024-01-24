@@ -1,12 +1,51 @@
 import { useEffect, useState } from "react"
 import { GeoJSON } from "react-leaflet"
 import { useGeoJsonData } from "../../hooks/useGeoJsonData"
-import { states } from "../../../data.json" 
+import usePopulationData from "../../hooks/usePopulationData"
+import { selectedStyle, lowLimitStyle, mediumLimitStyle, highLimitStyle } from './Styles'
 
 const HeatmapLayer = ({ mapDivision }) => {
   const data = useGeoJsonData(mapDivision)
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [key, setKey] = useState(0); // clave única
+
+  const { groupedDataWithDivision3, groupedDataWithoutDivision3 } = usePopulationData({})
+
+  const getPopulationByDivision3 = () => {
+    const populationByDivision3 = {}
+    for (const key in groupedDataWithDivision3) {
+      const id = key;
+      const totalPopulation = groupedDataWithDivision3[key].totalPopulation;
+      populationByDivision3[id] = totalPopulation
+    }
+    return populationByDivision3
+  }
+
+  const setStyle = (feature) => {
+    // Obtener la población del estado actual
+    const populationByDivision3 = getPopulationByDivision3()
+    const currentGroupId = feature.properties.ID_3
+
+    const population = populationByDivision3[currentGroupId]
+    
+    // Definir los límites de los tramos de población
+    const lowLimit = 10000000
+    const mediumLimit = 30000000
+
+    // Asignar colores en función de los tramos de población
+    if (selectedRegion && selectedRegion.feature.properties.ID_3 == currentGroupId) {
+      return selectedStyle
+    } else {
+      if (population < lowLimit) {
+        return lowLimitStyle
+      } else if (population < mediumLimit) {
+        return mediumLimitStyle
+      } else {
+        return highLimitStyle
+      }
+    }
+  }
+
 
   useEffect(() => {
     setKey((prevKey) => prevKey + 1);
@@ -15,34 +54,6 @@ const HeatmapLayer = ({ mapDivision }) => {
   useEffect(() => {
     setSelectedRegion(null)
   }, [mapDivision])
-
-  const selectedStyle = {
-    opacity: 0.7,
-    fillOpacity: 1,
-    fillColor: '#d2e4fc',
-  }
-
-  const lowLimitStyle = {
-    opacity: 0.3,
-    fillOpacity: 0.8,
-    color: 'black',
-    fillColor: '#90B1DB',
-  }
-
-  const mediumLimitStyle = {
-    opacity: 0.3,
-    fillOpacity: 0.8,
-    color: 'black',
-    fillColor: '#00569D',
-  }
-
-  const highLimitStyle = {
-    opacity: 0.3,
-    fillOpacity: 0.8,
-    color: 'black',
-    fillColor: '#002F5C',
-  }
-
   
   const onEachFeature = (feature, layer) => {
     layer.on("click", () => {
@@ -73,40 +84,6 @@ const HeatmapLayer = ({ mapDivision }) => {
         })
       }
     });
-  }
-
-  
-  function getPopulationByState(stateName) {
-  // Buscar el estado en el conjunto de datos
-    const state = states.find(function(s) {
-      return s.id_3 === stateName;
-    });
-    
-    // Devolver la población si se encuentra el estado, de lo contrario, devolver un valor predeterminado
-    return state ? state.population : 0; // Puedes cambiar el valor predeterminado según tu necesidad
-  }
-
-  const setStyle = (feature) => {
-    // Obtener la población del estado actual
-    const population = getPopulationByState(feature.properties.ID_3); // Necesitarías implementar esta función para obtener la población real
-    
-    // Definir los límites de los tramos de población
-    const lowLimit = 300000;
-    const mediumLimit = 600000;
-
-    // Asignar colores en función de los tramos de población
-    if (selectedRegion && selectedRegion.feature.properties.ID_3 == feature.properties.ID_3) {
-      return selectedStyle
-
-    } else {
-      if (population < lowLimit) {
-        return lowLimitStyle
-      } else if (population < mediumLimit) {
-        return mediumLimitStyle
-      } else {
-        return highLimitStyle
-      }
-    }
   }
 
   const filteredRegions = () => {
