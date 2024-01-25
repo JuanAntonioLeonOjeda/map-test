@@ -19,7 +19,7 @@ const PatentsLayer = () => {
                 <Circle
                     key={index}
                     center={[data.latitude, data.longitude]}
-                    pathOptions={{ fillColor: 'red', stroke: false }}
+                    pathOptions={{ fillColor: 'red', stroke: false, fillOpacity: 0.3 }}
                     radius={data.patents * 100}
                 />
             ))}

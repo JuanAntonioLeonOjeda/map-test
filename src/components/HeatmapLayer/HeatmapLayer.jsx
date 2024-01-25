@@ -27,7 +27,7 @@ const HeatmapLayer = ({ mapDivision }) => {
     const currentGroupId = feature.properties.ID_3
 
     const population = populationByDivision3[currentGroupId]
-    
+
     // Asignar colores en función de los tramos de población
     if (selectedRegion && selectedRegion.feature.properties.ID_3 == currentGroupId) {
       return selectedStyle
