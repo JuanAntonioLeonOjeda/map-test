@@ -2,11 +2,9 @@ import { useRef } from 'react'
 import { downloadCsv, uploadCsv } from '../../firebase/queries'
 import PropTypes from 'prop-types'
 
-import NewMarkerForm from '../NewMarkerForm/NewMarkerForm'
-
 import './MapControls.css'
 
-export default function MapControls ({ categories, selected, changeCheck, onlyShowSelected, setOnlyShowSelected, mapDivision, setMapDivision }) {
+export default function MapControls ({ selected, changeCheck, onlyShowSelected, setOnlyShowSelected, mapDivision, setMapDivision }) {
   const fileInputRef = useRef(null)
 
   const handleUpload = () => {
@@ -17,10 +15,6 @@ export default function MapControls ({ categories, selected, changeCheck, onlySh
     const file = e.target.files[0]
     uploadCsv(file);
   }
-
-  const handleChange = (e) => {
-    setMarkerData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
   return (
     <div className="controls">
@@ -66,20 +60,7 @@ export default function MapControls ({ categories, selected, changeCheck, onlySh
             </label>
           </div>
       </div>
-      <div className="employee-filter">
-        <h3>Employees</h3>
-        {categories.map((category, index) => (
-          <div key={index}>
-            <input
-              type="checkbox"
-              id={`checkbox-${index}`}
-              checked={selected[category]}
-              onChange={() => changeCheck(category)}
-            />
-            <label htmlFor={`checkbox-${index}`}>{category}</label>
-          </div>
-        ))}
-      </div>
+
       Mostrar solo el seleccionado?
       <div>
         <label>
@@ -104,7 +85,6 @@ export default function MapControls ({ categories, selected, changeCheck, onlySh
           No
         </label>
       </div>
-      <NewMarkerForm categories={ categories }/>
       <div className="control-actions">
         <button onClick={downloadCsv}>Download CSV</button>
         <input

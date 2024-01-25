@@ -1,9 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { booleanPointInPolygon, point, polygon } from "@turf/turf";
 import { MapContainer, FeatureGroup } from "react-leaflet"
-import { EditControl } from 'react-leaflet-draw';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-draw/dist/leaflet.draw.css';
 
 import MarkerComponent from "../MarkerComponent/MarkerComponent"
 import MapControls from "../MapControls/MapControls"
@@ -18,12 +15,13 @@ import LayersControlComponent from "../LayersControlComponent/LayersControl"
 import ContourLayer from "../MapContour/MapContour"
 import CoordsDisplay from "../CoordsDisplay/CoordsDisplay"
 import { getDataAPI } from "../../services/data"
+import DrawComponent from "../DrawComponent/DrawComponent";
 
 export default function MapComponent() {
   const mapRef = useRef()
-  const [mapCenter, setMapCenter] = useState([48.5, 8.5])
+  const [mapCenter, setMapCenter] = useState([48.6, 9])
   const [markers, setMarkers] = useState([])
-  const [employeeCategories, setEmployeeCategories] = useState([])
+
   const [selectedCategories, setSelectedCategories] = useState({})
   const [showControls, setShowControls] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -31,49 +29,24 @@ export default function MapComponent() {
   const [ onlyShowSelected, setOnlyShowSelected ] = useState(false)
   const [ mapDivision, setMapDivision ] = useState("division3")
 
-
   const handleClick = (data) => {
     setMapCenter([data.latitude, data.longitude])
-  }
-
-  const findPopulationParams = (datas) => {
-    const populationValues = datas.map(row => row.districtPopulation);
-    const maxPopulation = Math.max(...populationValues);
-    const minPopulation = Math.min(...populationValues);
-
-    // Step 2: Calculate the population range
-    const populationRange = maxPopulation - minPopulation;
-
-    // Step 3: Divide the population range into at least 5 categories
-    const categoriesCount = 5;
-    const categoryRange = Math.ceil(populationRange / categoriesCount);
-
-    return { minPopulation, maxPopulation, categoryRange}
   }
 
   const connectToDB = async () => {
     const { datas } = await getDataAPI()
 
-    const { minPopulation, categoryRange } = findPopulationParams(datas)
-
-
-    const populationCategory = new Set();
-
     const filteredDatas = datas.map(row => {
-      const category = Math.floor((row.districtPopulation - minPopulation) / categoryRange);
-      populationCategory.add(category);
-
        return (
         <MarkerComponent
           key={row.name}
           info={row}
           onClick={() => handleClick(row)}
         />
-      );
-    });
+      )
+    })
 
     setMarkers(filteredDatas)
-    setEmployeeCategories([...populationCategory])
   }
 
   useEffect(() => {
@@ -127,22 +100,12 @@ export default function MapComponent() {
     setShowControls(!showControls)
   }
 
-  const onDrawCreate = (e) => {
-    // Obtén la capa del evento
-    const layer = e.layer;
-
-    // Aquí puedes manejar la lógica adicional si es necesario
-    const latlngs = layer.getLatLngs();
-    setSearchPolygon(latlngs)
-
-  };
-
   return (
     <searchContext.Provider value={{ searchQuery, setSearchQuery }}>
       <MapContainer
         center={mapCenter}
         zoom={2}
-        minZoom={6}
+        minZoom={8}
         doubleClickZoom={false}
         style={{ height: "100vh", width: "100vw", zIndex: 0 }}
         ref={mapRef}
@@ -161,26 +124,8 @@ export default function MapComponent() {
          {/* FeatureGroup */}
         <FeatureGroup>
           {/* Componente de control de edición para dibujar */}
-          <EditControl
-            position="bottomright"
-            onCreated={onDrawCreate}
-            onDeleted={() => {
-              setSearchPolygon(null);
-            }}
-            draw={{
-              rectangle: false,
-              polyline: false,
-              circle: false,
-              marker: false,
-              circlemarker: false,
-              polygon: !searchPolygon ? {
-                shapeOptions: {
-                  color: 'blue', // Color de los polígonos
-                },
-              } : false,
-            }}
-            
-          />
+        <DrawComponent searchPolygon={searchPolygon} setSearchPolygon={setSearchPolygon}/>
+
         </FeatureGroup>
         {showControls && (
           <MapControls
@@ -188,7 +133,6 @@ export default function MapComponent() {
             setMapDivision={setMapDivision}
             onlyShowSelected={onlyShowSelected}
             setOnlyShowSelected={setOnlyShowSelected}
-            categories={employeeCategories}
             selected={selectedCategories}
             changeCheck={handleCheckboxChange}
           />

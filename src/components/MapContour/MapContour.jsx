@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const style = {
   opacity: .8, 
   fillOpacity: 0.2,
+  color: 'dimGray',
   weight: 2
 }
 
@@ -21,11 +22,11 @@ const ContourLayer = ({ mapDivision }) => {
   if (data) {
     return (
       <section>
-{/*         <GeoJSON 
+        <GeoJSON 
           data={data} 
           style={style}
           key={key} // Usa la clave única
-          /> */}
+          />
       </section>
       )
     } else {
