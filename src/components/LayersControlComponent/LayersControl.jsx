@@ -13,10 +13,10 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
         url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
       />
 
-      <TileLayer
+{/*       <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
-      />
+      /> */}
       
       <LayersControl.Overlay name="Tech companies" checked>
         <LayerGroup>
@@ -26,19 +26,19 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
         </LayerGroup>
       </LayersControl.Overlay>
 
-      <LayersControl.Overlay name="Populations" checked>
+      <LayersControl.Overlay name="Populations">
         <LayerGroup>
           <PopulationLayer />
         </LayerGroup>
       </LayersControl.Overlay>
 
-      <LayersControl.Overlay name="Patents" checked>
+      <LayersControl.Overlay name="Patents">
         <LayerGroup>
           <PatentsLayer />
         </LayerGroup>
       </LayersControl.Overlay>
 
-      <LayersControl.Overlay name="Heatmap">
+      <LayersControl.Overlay name="Heatmap" checked>
         <MarkerClusterGroup chunkedLoading>
           <HeatmapLayer mapDivision={mapDivision} />
         </MarkerClusterGroup>

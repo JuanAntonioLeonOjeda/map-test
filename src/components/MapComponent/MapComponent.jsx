@@ -29,7 +29,7 @@ export default function MapComponent() {
   const [searchQuery, setSearchQuery] = useState('')
   const [ searchPolygon, setSearchPolygon ] = useState(null)
   const [ onlyShowSelected, setOnlyShowSelected ] = useState(false)
-  const [ mapDivision, setMapDivision ] = useState("country")
+  const [ mapDivision, setMapDivision ] = useState("division3")
 
 
   const handleClick = (data) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { GeoJSON } from "react-leaflet"
 import { useGeoJsonData } from "../../hooks/useGeoJsonData"
 import usePopulationData from "../../hooks/usePopulationData"
-import { selectedStyle, lowLimitStyle, mediumLimitStyle, highLimitStyle } from './Styles'
+import { selectedStyle, below10, between10and20, between20and35, over35, defaultStyle } from './Styles'
 
 const HeatmapLayer = ({ mapDivision }) => {
   const data = useGeoJsonData(mapDivision)
@@ -28,24 +28,23 @@ const HeatmapLayer = ({ mapDivision }) => {
 
     const population = populationByDivision3[currentGroupId]
     
-    // Definir los límites de los tramos de población
-    const lowLimit = 10000000
-    const mediumLimit = 30000000
-
     // Asignar colores en función de los tramos de población
     if (selectedRegion && selectedRegion.feature.properties.ID_3 == currentGroupId) {
       return selectedStyle
     } else {
-      if (population < lowLimit) {
-        return lowLimitStyle
-      } else if (population < mediumLimit) {
-        return mediumLimitStyle
+      if (population < 10000000) {
+        return below10
+      } else if (population >= 10000000 & population < 20000000) {
+        return between10and20
+      } else if (population >= 20000000 & population < 35000000) {
+        return between20and35
+      } else if (population > 35000000) {
+        return over35
       } else {
-        return highLimitStyle
+        return defaultStyle
       }
     }
   }
-
 
   useEffect(() => {
     setKey((prevKey) => prevKey + 1);

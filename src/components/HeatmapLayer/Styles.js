@@ -4,23 +4,37 @@ export const selectedStyle = {
   fillColor: '#d2e4fc',
 }
 
-export const lowLimitStyle = {
+export const defaultStyle = {
   opacity: 0.3,
   fillOpacity: 0.8,
   color: 'black',
-  fillColor: '#90B1DB',
+  fillColor: '#aed6f1',
 }
 
-export const mediumLimitStyle = {
+export const below10 = {
   opacity: 0.3,
   fillOpacity: 0.8,
   color: 'black',
-  fillColor: '#00569D',
+  fillColor: '#85c1e9',
 }
 
-export const highLimitStyle = {
+export const between10and20 = {
   opacity: 0.3,
   fillOpacity: 0.8,
   color: 'black',
-  fillColor: '#002F5C',
+  fillColor: '#3498db',
+}
+
+export const between20and35 = {
+  opacity: 0.3,
+  fillOpacity: 0.8,
+  color: 'black',
+  fillColor: '#2874a6',
+}
+
+export const over35 = {
+  opacity: 0.3,
+  fillOpacity: 0.8,
+  color: 'black',
+  fillColor: '#1b4f72',
 }
