@@ -1,4 +1,4 @@
-
+import L from 'leaflet'
 import { LayerGroup, LayersControl, TileLayer } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import HeatmapLayer from "../HeatmapLayer/HeatmapLayer"
@@ -13,15 +13,23 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
         url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
       />
 
-{/*       <TileLayer
+      {/*       <TileLayer
         attribution='© OpenStreetMap, © CartoDB'
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
       /> */}
-      
+
       <LayersControl.Overlay name="Tech companies" checked>
         <LayerGroup>
-          <MarkerClusterGroup chunkedLoading>
-            { markers() }
+          <MarkerClusterGroup 
+            chunkedLoading
+            polygonOptions={{
+              fillOpacity: 0.2,
+              weight: 0
+            }}
+            
+            
+          >
+            {markers()}
           </MarkerClusterGroup>
         </LayerGroup>
       </LayersControl.Overlay>
@@ -39,9 +47,7 @@ const LayersControlComponent = ({ markers, mapDivision }) => {
       </LayersControl.Overlay>
 
       <LayersControl.Overlay name="Heatmap" checked>
-        <MarkerClusterGroup chunkedLoading>
-          <HeatmapLayer mapDivision={mapDivision} />
-        </MarkerClusterGroup>
+        <HeatmapLayer mapDivision={mapDivision} />
       </LayersControl.Overlay>
 
     </LayersControl>
