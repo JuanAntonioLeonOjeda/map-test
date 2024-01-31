@@ -1,36 +1,23 @@
 import { Circle } from "react-leaflet"
 import { useEffect, useState } from 'react'
-import { getAtrineoCollectionAPI } from "../../services/atrineo"
+import { useDistrictsCoords } from "../../hooks/useDistrictsCoords"
 
 const PopulationLayer = () => {
-    const [collection, setCollection] = useState()
+    const data = useDistrictsCoords({})
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await getAtrineoCollectionAPI()
-            setCollection(result.collection)
-        }
-        fetchData()
-    }, [])
+    console.log(data)
+
 
     return (
         <section>
-{/*             {datas && datas.map((data, index) => (
+            {data && data.map((item, index) => (
                 <Circle
                     key={index}
-                    center={[data.latitude, data.longitude]}
+                    center={[item.latitude, item.longitude]}
                     pathOptions={{ fillColor: 'blue', stroke: false }}
-                    radius={data.districtPopulation / 500}
+                    radius={item.districtPopulation / 500}
                 />
-            ))} */}
-{/*             {collection && collection.map((data, index) => {
-                <Circle
-                    key={index}
-                    center={[data.latitude, data.longitude]}
-                    pathOptions={{ fillColor: 'blue', stroke: false }}
-                    radius={data.districtPopulation / 500}
-                />
-            })} */}
+            ))}
         </section>
     )
 }

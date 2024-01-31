@@ -1,0 +1,472 @@
+{
+  "districts": [
+    {
+      "districtName": "Remchingen",
+      "latitude": 48.95,
+      "longitude": 8.56,
+      "districtPopulation": 2903126
+    },
+    {
+      "districtName": "Altensteig",
+      "latitude": 48.586,
+      "longitude": 8.6,
+      "districtPopulation": 970591
+    },
+    {
+      "districtName": "Egenhausen",
+      "latitude": 48.566,
+      "longitude": 8.618,
+      "districtPopulation": 1774150
+    },
+    {
+      "districtName": "Pforzheim",
+      "latitude": 48.89,
+      "longitude": 8.702,
+      "districtPopulation": 305544
+    },
+    {
+      "districtName": "Bad Herrenalb",
+      "latitude": 48.798,
+      "longitude": 8.44,
+      "districtPopulation": 1487155
+    },
+    {
+      "districtName": "Schömberg",
+      "latitude": 48.209,
+      "longitude": 8.757,
+      "districtPopulation": 1901578
+    },
+    {
+      "districtName": "Nagold",
+      "latitude": 48.55,
+      "longitude": 8.723,
+      "districtPopulation": 2756854
+    },
+    {
+      "districtName": "Knittlingen",
+      "latitude": 49.023,
+      "longitude": 8.757,
+      "districtPopulation": 165064
+    },
+    {
+      "districtName": "Neuweiler",
+      "latitude": 48.657,
+      "longitude": 8.596,
+      "districtPopulation": 1997597
+    },
+    {
+      "districtName": "Horb am Neckar",
+      "latitude": 48.44,
+      "longitude": 8.69,
+      "districtPopulation": 229869
+    },
+    {
+      "districtName": "Glatten",
+      "latitude": 48.444,
+      "longitude": 8.513,
+      "districtPopulation": 1490328
+    },
+    {
+      "districtName": "Straubenhardt",
+      "latitude": 48.844,
+      "longitude": 8.531,
+      "districtPopulation": 1156583
+    },
+    {
+      "districtName": "Grömbach",
+      "latitude": 48.58,
+      "longitude": 8.556,
+      "districtPopulation": 1735718
+    },
+    {
+      "districtName": "Keltern",
+      "latitude": 48.9,
+      "longitude": 8.578,
+      "districtPopulation": 2491884
+    },
+    {
+      "districtName": "Wörnersberg",
+      "latitude": 48.56,
+      "longitude": 8.56,
+      "districtPopulation": 1747903
+    },
+    {
+      "districtName": "Wurmberg",
+      "latitude": 48.87,
+      "longitude": 8.81,
+      "districtPopulation": 1340838
+    },
+    {
+      "districtName": "Engelsbrand",
+      "latitude": 48.83,
+      "longitude": 8.64,
+      "districtPopulation": 1350734
+    },
+    {
+      "districtName": "Kämpfelbach",
+      "latitude": 48.94,
+      "longitude": 8.629,
+      "districtPopulation": 284539
+    },
+    {
+      "districtName": "Neubulach",
+      "latitude": 48.66,
+      "longitude": 8.69,
+      "districtPopulation": 1501717
+    },
+    {
+      "districtName": "Ebhausen",
+      "latitude": 48.58,
+      "longitude": 8.678,
+      "districtPopulation": 218652
+    },
+    {
+      "districtName": "Bad Liebenzell",
+      "latitude": 48.77,
+      "longitude": 8.73,
+      "districtPopulation": 640952
+    },
+    {
+      "districtName": "Eisingen",
+      "latitude": 48.947,
+      "longitude": 8.668,
+      "districtPopulation": 2770728
+    },
+    {
+      "districtName": "Illingen",
+      "latitude": 48.956,
+      "longitude": 8.919,
+      "districtPopulation": 2329627
+    },
+    {
+      "districtName": "Sternenfels",
+      "latitude": 49.05,
+      "longitude": 8.85,
+      "districtPopulation": 390943
+    },
+    {
+      "districtName": "Bad Rippoldsau-Schapbach",
+      "latitude": 48.43,
+      "longitude": 8.32,
+      "districtPopulation": 2734519
+    },
+    {
+      "districtName": "Freudenstadt",
+      "latitude": 48.463,
+      "longitude": 8.41,
+      "districtPopulation": 1107323
+    },
+    {
+      "districtName": "Bad Wildbad",
+      "latitude": 48.749,
+      "longitude": 8.549,
+      "districtPopulation": 358431
+    },
+    {
+      "districtName": "Pforzheim",
+      "latitude": 48.89,
+      "longitude": 8.702,
+      "districtPopulation": 1995033
+    },
+    {
+      "districtName": "Tiefenbronn",
+      "latitude": 48.82,
+      "longitude": 8.8,
+      "districtPopulation": 891286
+    },
+    {
+      "districtName": "Mönsheim",
+      "latitude": 48.86,
+      "longitude": 8.86,
+      "districtPopulation": 1575474
+    },
+    {
+      "districtName": "Wildberg",
+      "latitude": 48.62,
+      "longitude": 8.64,
+      "districtPopulation": 316433
+    },
+    {
+      "districtName": "Simmozheim",
+      "latitude": 48.75,
+      "longitude": 8.81,
+      "districtPopulation": 61766
+    },
+    {
+      "districtName": "Ötisheim",
+      "latitude": 48.96,
+      "longitude": 8.8,
+      "districtPopulation": 2093006
+    },
+    {
+      "districtName": "Pfalzgrafenweiler",
+      "latitude": 48.52,
+      "longitude": 8.56,
+      "districtPopulation": 2287996
+    },
+    {
+      "districtName": "Königsbach-Stein",
+      "latitude": 48.96,
+      "longitude": 8.6,
+      "districtPopulation": 1516030
+    },
+    {
+      "districtName": "Heimsheim",
+      "latitude": 48.8,
+      "longitude": 8.86,
+      "districtPopulation": 2614282
+    },
+    {
+      "districtName": "Freudenstadt",
+      "latitude": 48.46,
+      "longitude": 8.81,
+      "districtPopulation": 2331354
+    },
+    {
+      "districtName": "Alpirsbach",
+      "latitude": 48.345,
+      "longitude": 8.403,
+      "districtPopulation": 1202091
+    },
+    {
+      "districtName": "Pforzheim",
+      "latitude": 48.89,
+      "longitude": 8.702,
+      "districtPopulation": 1253397
+    },
+    {
+      "districtName": "Ölbronn-Dürrn",
+      "latitude": 48.98,
+      "longitude": 8.75,
+      "districtPopulation": 1407814
+    },
+    {
+      "districtName": "Althengstett",
+      "latitude": 48.723,
+      "longitude": 8.795,
+      "districtPopulation": 2249259
+    },
+    {
+      "districtName": "Calw",
+      "latitude": 48.712,
+      "longitude": 8.742,
+      "districtPopulation": 422457
+    },
+    {
+      "districtName": "Simmozheim",
+      "latitude": 48.752,
+      "longitude": 8.812,
+      "districtPopulation": 1613552
+    },
+    {
+      "districtName": "Ispringen",
+      "latitude": 48.92,
+      "longitude": 8.667,
+      "districtPopulation": 864389
+    },
+    {
+      "districtName": "Ostelsheim",
+      "latitude": 48.726,
+      "longitude": 8.848,
+      "districtPopulation": 1790928
+    },
+    {
+      "districtName": "Schopfloch",
+      "latitude": 48.54,
+      "longitude": 9.53,
+      "districtPopulation": 2887466
+    },
+    {
+      "districtName": "Haiterbach",
+      "latitude": 48.524,
+      "longitude": 8.648,
+      "districtPopulation": 771856
+    },
+    {
+      "districtName": "Rohrdorf",
+      "latitude": 48.568,
+      "longitude": 8.694,
+      "districtPopulation": 432041
+    },
+    {
+      "districtName": "Freudenstadt",
+      "latitude": 48.463,
+      "longitude": 8.411,
+      "districtPopulation": 1453470
+    },
+    {
+      "districtName": "Maulbronn",
+      "latitude": 48.998,
+      "longitude": 8.804,
+      "districtPopulation": 1379702
+    },
+    {
+      "districtName": "Wiernsheim",
+      "latitude": 48.89,
+      "longitude": 8.85,
+      "districtPopulation": 1226309
+    },
+    {
+      "districtName": "Simmersfeld",
+      "latitude": 48.621,
+      "longitude": 8.516,
+      "districtPopulation": 2283740
+    },
+    {
+      "districtName": "Dobel",
+      "latitude": 48.796,
+      "longitude": 8.495,
+      "districtPopulation": 1034454
+    },
+    {
+      "districtName": "Wimsheim",
+      "latitude": 48.851,
+      "longitude": 8.825,
+      "districtPopulation": 472264
+    },
+    {
+      "districtName": "Enzklösterle",
+      "latitude": 48.666,
+      "longitude": 8.469,
+      "districtPopulation": 705702
+    },
+    {
+      "districtName": "Pforzheim",
+      "latitude": 48.89,
+      "longitude": 8.702,
+      "districtPopulation": 1251917
+    },
+    {
+      "districtName": "Gechingen",
+      "latitude": 48.695,
+      "longitude": 8.829,
+      "districtPopulation": 26734
+    },
+    {
+      "districtName": "Loßburg",
+      "latitude": 48.411,
+      "longitude": 8.447,
+      "districtPopulation": 322229
+    },
+    {
+      "districtName": "Bad Teinach-Zavelstein",
+      "latitude": 48.689,
+      "longitude": 8.688,
+      "districtPopulation": 2342552
+    },
+    {
+      "districtName": "Neulingen",
+      "latitude": 48.957,
+      "longitude": 8.708,
+      "districtPopulation": 2597362
+    },
+    {
+      "districtName": "Friolzheim",
+      "latitude": 48.835,
+      "longitude": 8.833,
+      "districtPopulation": 978432
+    },
+    {
+      "districtName": "Pforzheim",
+      "latitude": 48.807,
+      "longitude": 8.702,
+      "districtPopulation": 936470
+    },
+    {
+      "districtName": "Neuhausen",
+      "latitude": 48.793,
+      "longitude": 8.778,
+      "districtPopulation": 837677
+    },
+    {
+      "districtName": "Freudenstadt",
+      "latitude": 48.462,
+      "longitude": 8.411,
+      "districtPopulation": 1061217
+    },
+    {
+      "districtName": "Neuenbürg",
+      "latitude": 48.848,
+      "longitude": 8.587,
+      "districtPopulation": 1983062
+    },
+    {
+      "districtName": "Höfen an der Enz",
+      "latitude": 48.802,
+      "longitude": 8.583,
+      "districtPopulation": 1229503
+    },
+    {
+      "districtName": "Empfingen",
+      "latitude": 48.392,
+      "longitude": 8.709,
+      "districtPopulation": 524304
+    },
+    {
+      "districtName": "Birkenfeld",
+      "latitude": 48.869,
+      "longitude": 8.633,
+      "districtPopulation": 1579581
+    },
+    {
+      "districtName": "Oberreichenbach",
+      "latitude": 48.734,
+      "longitude": 8.663,
+      "districtPopulation": 2092422
+    },
+    {
+      "districtName": "Mühlacker",
+      "latitude": 48.948,
+      "longitude": 8.848,
+      "districtPopulation": 1429564
+    },
+    {
+      "districtName": "Seewald",
+      "latitude": 48.583,
+      "longitude": 8.466,
+      "districtPopulation": 2764472
+    },
+    {
+      "districtName": "Unterreichenbach",
+      "latitude": 48.826,
+      "longitude": 8.708,
+      "districtPopulation": 1063585
+    },
+    {
+      "districtName": "Eutingen im Gäu",
+      "latitude": 48.494,
+      "longitude": 8.754,
+      "districtPopulation": 1731875
+    },
+    {
+      "districtName": "Kieselbronn",
+      "latitude": 48.933,
+      "longitude": 8.747,
+      "districtPopulation": 43115
+    },
+    {
+      "districtName": "Baiersbronn",
+      "latitude": 48.505,
+      "longitude": 8.371,
+      "districtPopulation": 1432102
+    },
+    {
+      "districtName": "Dornstetten",
+      "latitude": 48.465,
+      "longitude": 8.501,
+      "districtPopulation": 257648
+    },
+    {
+      "districtName": "Waldachtal",
+      "latitude": 48.492,
+      "longitude": 8.568,
+      "districtPopulation": 1739020
+    },
+    {
+      "districtName": "Schopfloch",
+      "latitude": 48.457,
+      "longitude": 8.55,
+      "districtPopulation": 2044373
+    }
+  ]
+}

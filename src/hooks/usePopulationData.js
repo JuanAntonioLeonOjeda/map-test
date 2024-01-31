@@ -36,4 +36,4 @@ const usePopulationData = () => {
   return { groupedDataWithDivision3, groupedDataWithoutDivision3 };
 }
 
-export default usePopulationData;
+export default usePopulationData
