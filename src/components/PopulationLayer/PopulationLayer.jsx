@@ -1,12 +1,8 @@
 import { Circle } from "react-leaflet"
-import { useEffect, useState } from 'react'
 import { useDistrictsCoords } from "../../hooks/useDistrictsCoords"
 
 const PopulationLayer = () => {
     const data = useDistrictsCoords({})
-
-    console.log(data)
-
 
     return (
         <section>
@@ -14,7 +10,7 @@ const PopulationLayer = () => {
                 <Circle
                     key={index}
                     center={[item.latitude, item.longitude]}
-                    pathOptions={{ fillColor: 'blue', stroke: false }}
+                    pathOptions={{ fillColor: 'orange', stroke: false, fillOpacity: 0.6 }}
                     radius={item.districtPopulation / 500}
                 />
             ))}
