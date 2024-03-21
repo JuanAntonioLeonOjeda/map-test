@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { uploadGeojson } from '../services/uploadData';
+import CSVReader from 'react-csv-reader'
+import { uploadGeojson, addCoordinates } from '../services/uploadData';
 
 function UploadGeoJson() {
   const [file, setFile] = useState(null);
@@ -16,25 +17,31 @@ function UploadGeoJson() {
     }
   }
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
+  // const handleFileChange = (event) => {
+  //   const selectedFile = event.target.files[0];
 
-    if (selectedFile) {
+  //   if (selectedFile) {
       
-      const reader = new FileReader();
+  //     const reader = new FileReader();
       
-      reader.onload = (e) => {
-        try {
-          const jsonData = JSON.parse(e.target.result);
-          setFile(jsonData);
-          console.log(jsonData);
-        } catch (error) {
-          console.error('Error parsing JSON:', error);
-        }
-      };
+  //     reader.onload = (e) => {
+  //       try {
+  //         const jsonData = JSON.parse(e.target.result);
+  //         setFile(jsonData);
+  //         console.log(jsonData);
+  //       } catch (error) {
+  //         console.error('Error parsing JSON:', error);
+  //       }
+  //     };
 
-      reader.readAsText(selectedFile);
-    }
+  //     reader.readAsText(selectedFile);
+  //   }
+  // };
+
+  const handleFileChange = async (data, fileInfo) => {
+    console.log("Data:", data);
+    setFile(data)
+    console.log("File Information:", fileInfo);
   };
 
   const handleRadioChange = (event) => {
@@ -44,13 +51,31 @@ function UploadGeoJson() {
   const handleSubmit = async () => {
     // Aquí puedes realizar la lógica para enviar el formulario al backend
     console.log('Enviar formulario al backend:', file, geoType);
-    await uploadDataFile(file, geoType)
+
+    const mapped = file.map(item => {
+      if (item.division3?.includes('Kreisfreie')) {
+        item.division3 = ''
+      }
+      return {
+        ...item,
+        division3: item.division3?.replace(/ a\.d\..*| a\..*| i\..*| am.*/, '')
+      }
+    })
+
+    await uploadDataFile(mapped, geoType)
   };
+
+  const handleCoords = async () => {
+    await addCoordinates(file)
+  }
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      
+      {/* <input type="file" onChange={handleFileChange} /> */}
+      <CSVReader
+        onFileLoaded={handleFileChange}
+        parserOptions={{ header: true, dynamicTyping: true, skipEmptyLines: true }}
+      />
       <div>
         <label>
           <input
@@ -100,6 +125,12 @@ function UploadGeoJson() {
       </div>
 
       <button onClick={handleSubmit}>Enviar</button>
+
+      <CSVReader
+        onFileLoaded={handleFileChange}
+        parserOptions={{ header: true, dynamicTyping: true, skipEmptyLines: true }}
+      />
+      <button onClick={handleCoords}>Add Coordinates</button>
     </div>
   );
 }
